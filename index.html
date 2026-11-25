@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <!-- ================================================= -->
+    <!-- GOOGLE ANALYTICS                                  -->
+    <!-- ================================================= -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CV8ZHGCPHG"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-CV8ZHGCPHG');
+
+    </script>
+
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <title>Mr.Burn Catalogue</title>
+
+
+    <!-- ================================================= -->
+    <!-- STILE                                              -->
+    <!-- ================================================= -->
+
+    <style>
+
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f7f4f0;
+
+            color: #333;
+
+        }
+
+
+
+        /* ================================================= */
+        /* HEADER                                             */
+        /* ================================================= */
+
+        header {
+
+            text-align: center;
+
+            padding: 45px 20px 30px;
+
+        }
+
+
+        header h1 {
+
+            margin: 0;
+
+            font-size: 34px;
+
+        }
+
+
+        header p {
+
+            color: #777;
+
+            font-size: 17px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* CATALOGO                                           */
+        /* ================================================= */
+
+        .catalogo {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* PRODOTTO                                           */
+        /* ================================================= */
+
+        .prodotto {
+
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.08);
+
+            padding-bottom: 20px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* FOTO                                               */
+        /* ================================================= */
+
+        .foto-prodotto {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto !important;
+
+            max-width: 100%;
+
+            object-fit: contain;
+
+            cursor: zoom-in;
+
+        }
+
+        /* ================================================= */
+        /* CONTENUTO                                          */
+        /* ================================================= */
+
+        .contenuto {
+
+            padding: 20px;
+
+        }
+
+
+        .prodotto h2 {
+
+            margin-top: 0;
+
+            font-size: 22px;
+
+        }
+
+
+        .descrizione {
+
+            color: #666;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        /* ================================================= */
+        /* PREZZO                                             */
+        /* ================================================= */
+
+        .prezzo {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            margin: 15px 0;
+
+        }
+
+
+
+        /* ================================================= */
+        /* DATA                                               */
+        /* ================================================= */
+
+        .data {
+
+            font-size: 13px;
+
+            color: #888;
+
+            margin-top: 10px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TIMER                                              */
+        /* ================================================= */
+
+        .timer {
+
+            margin: 20px 0;
+
+            padding: 14px;
+
+            text-align: center;
+
+            background: #f3eee8;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+        .timer.giorno-zero {
+
+            background: #fff3cd;
+
+            color: #856404;
+
+        }
+
+
+        .timer.scaduto {
+
+            background: #f2dede;
+
+            color: #a94442;
+
+        }
+
+
+        .timer.non-disponibile {
+
+            background: #eeeeee;
+
+            color: #666;
+
+        }
+
+
+
+        /* ================================================= */
+        /* PULSANTE RICHIESTA                                 */
+        /* ================================================= */
+
+        .pulsante-richiesta {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 15px;
+
+            border-radius: 7px;
+
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.1s ease;
+
+        }
+
+
+        .pulsante-richiesta:hover {
+
+            background: #444;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .pulsante-richiesta.disabilitato {
+
+            background: #999;
+
+            color: white;
+
+            cursor: not-allowed;
+
+            pointer-events: none;
+
+            transform: none;
+
+        }
+
+
+
+        /* ================================================= */
+        /* MODALE                                             */
+        /* ================================================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(0,0,0,0.70);
+
+            padding: 20px;
+
+        }
+
+
+        .modal.attivo {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .modal-contenuto {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 480px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 40px
+                rgba(0,0,0,0.30);
+
+        }
+
+
+
+        /* ================================================= */
+        /* CHIUDI                                              */
+        /* ================================================= */
+
+        .chiudi {
+
+            position: absolute;
+
+            right: 18px;
+
+            top: 12px;
+
+            font-size: 30px;
+
+            color: #777;
+
+            background: none;
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .chiudi:hover {
+
+            color: #111;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TITOLO MODALE                                      */
+        /* ================================================= */
+
+        .modal h2 {
+
+            margin-top: 5px;
+
+            margin-bottom: 20px;
+
+            font-size: 25px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* OPERA SELEZIONATA                                  */
+        /* ================================================= */
+
+        .opera-selezionata {
+
+            background: #f3eee8;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .nome-opera {
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+        }
+
+
+        .prezzo-opera {
+
+            font-size: 16px;
+
+            color: #666;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TESTO                                              */
+        /* ================================================= */
+
+        .testo-contatto {
+
+            color: #666;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* SOCIAL                                             */
+        /* ================================================= */
+
+        .social-modal {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .social-modal a {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* INSTAGRAM                                           */
+        /* ================================================= */
+
+        .instagram {
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #f09433,
+                    #e6683c,
+                    #dc2743,
+                    #cc2366,
+                    #bc1888
+                );
+
+        }
+
+
+        .instagram:hover {
+
+            opacity: 0.90;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TIKTOK                                              */
+        /* ================================================= */
+
+        .tiktok {
+
+            background: #000;
+
+        }
+
+
+        .tiktok:hover {
+
+            background: #222;
+
+        }
+
+/* ================================================= */
+/* ZOOM FOTO                                         */
+/* ================================================= */
+
+.zoom-foto {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 2000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.90);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+}
+
+.zoom-foto.attivo {
+
+    display: flex;
+
+}
+
+.zoom-foto img {
+
+ display: block;
+
+    width: 95vw;
+    height: 90vh;
+
+    max-width: 95vw;
+    max-height: 90vh;
+
+    object-fit: contain;
+
+    cursor: zoom-out;
+
+}
+
+.chiudi-zoom {
+
+    position: absolute;
+
+    top: 15px;
+    right: 25px;
+
+    font-size: 40px;
+
+    color: white;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    z-index: 2001;
+
+}
+
+        /* ================================================= */
+        /* RESPONSIVE                                         */
+        /* ================================================= */
+
+@media (max-width: 900px) {
+
+    .catalogo {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .catalogo {
+
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+
+    }
+
+
+    .modal {
+
+        padding: 10px;
+
+    }
+
+
+    .modal-contenuto {
+
+        padding: 25px 20px;
+
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- ===================================================== -->
+<!-- HEADER                                                -->
+<!-- ===================================================== -->
+
+<header>
+
+    <h1>MR.BURN</h1>
+
+    <p>CATALOGUE</p>
+
+</header>
+ <div class="manifesto" style="max-width: 720px; margin: 20px auto 40px auto; padding: 20px; text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333; line-height: 1.6;">
+    <p style="font-size: 1.05rem; margin-bottom: 12px;">
+      <strong>Ogni opera nasce con un conto alla rovescia di 30 giorni.</strong><br>
+      Se viene adottata entro la scadenza, entra a far parte della tua collezione privata come pezzo unico.
+    </p>
+    <p style="font-size: 0.95rem; opacity: 0.85; margin: 0;">
+      Se resta invenduta allo scadere del <strong>Giorno 0</strong>, viene bruciata: le sue ceneri vengono disperse e impastate in <em>seed bomb</em> per far nascere nuovi fiori nei prati.
+    </p>
+  </div>
+
+
+
+<!-- ===================================================== -->
+<!-- CATALOGO                                              -->
+<!-- ===================================================== -->
+
+<main class="catalogo">
+
+
+
+  
+
+    <!-- ================================================= -->
+    <!-- OPERA    x riattivare devi rimuovere style="display: none;"-->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2026-11-16"
+   
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Peni kiwi.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+
+                Opera astratta Vacum DK2
+
+            </h2>
+
+
+            <p class="descrizione">
+                                
+                Dimensioni: 50x70 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+
+            </p>
+
+
+            <div class="prezzo">
+
+                € 100,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 16/11/2026
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ================================================= -->
+    <!-- OPERA   x rebderla visibile togli style="display: none;"   -->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2026-12-17"
+     
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Vacum Ratto delle Sabine.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+
+                Opera Il Ratto delle Sabine 
+
+            </h2>
+
+
+            <p class="descrizione">
+
+                Dimensioni: 50x70 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+             </p>
+
+
+            <div class="prezzo">
+
+                € 250,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 17/12/2026
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+
+      <!-- ================================================= -->
+    <!-- OPERA     per nascondere una sezione style="display: none;"                                        -->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2027-01-10"
+     
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Rainbow Dick.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+                Rainbow 
+            </h2>
+
+
+            <p class="descrizione">
+
+                Dimensioni: 33x48 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+            </p>
+
+
+            <div class="prezzo">
+
+                € 120,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 10/01/2027
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+      <!-- ================================================= -->
+    <!-- OPERA     per nascondere una sezione style="display: none;"                                        -->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2027-02-12"
+     
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Fiori Murakami Style 1.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+                Flower
+            </h2>
+
+
+            <p class="descrizione">
+
+                Dimensioni: 33x48 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+            </p>
+
+
+            <div class="prezzo">
+
+                € 120,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 12/02/2027
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+
+      <!-- ================================================= -->
+    <!-- OPERA     per nascondere una sezione style="display: none;"                                        -->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2027-03-13"
+     
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Red Dick.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+                Red
+            </h2>
+
+
+            <p class="descrizione">
+
+                Dimensioni: 33x48 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+            </p>
+
+
+            <div class="prezzo">
+
+                € 120,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 13/03/2027
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+
+ <!-- ================================================= -->
+    <!-- OPERA     per nascondere una sezione style="display: none;"                                        -->
+    <!-- ================================================= -->
+
+    <article
+        class="prodotto"
+        data-inizio="2027-04-13"
+     
+    >
+
+
+        <img
+            class="foto-prodotto"
+            src="Un Mare di colori.JPG"
+            alt="Opera"
+        >
+
+
+        <div class="contenuto">
+
+
+            <h2>
+                Un mare di colori
+            </h2>
+
+
+            <p class="descrizione">
+
+                Dimensioni: 50x70 cm — Pezzo unico originale (senza cornice). Dalla data di nascita ha esattamente 30 giorni per essere salvata. 
+                Allo scadere del Giorno 0, se non adottata, verrà bruciata e trasformata in seed bomb per far nascere nuovi fiori. Spedizione tracciata.
+            </p>
+
+
+            <div class="prezzo">
+
+                € 250,00
+
+            </div>
+
+
+            <div class="data">
+
+                Disponibile dal 13/04/2027
+
+            </div>
+
+
+            <div class="timer">
+
+                Calcolo disponibilità...
+
+            </div>
+
+
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
+
+                ADOTTA PRIMA DELLO SCADERE
+
+            </button>
+
+
+        </div>
+
+    </article>
+
+
+
+<!-- ================================================= -->
+<!-- SEZIONE OPERE CENERE    - rimuovi style="display: none;" per gestire più foto nella galleria -->
+<!-- ================================================= -->
+
+<article class="prodotto opera-cenere">
+
+    <!-- GALLERIA FOTOGRAFICA -->
+
+    <div class="galleria-ceneri">
+
+        <img
+            id="fotoPrincipaleCeneri"
+            src="Foto Vacum DK1.JPG"
+            alt="Opera bruciata"
+        >
+
+        <!-- FOTO PRECEDENTE -->
+
+        <button
+            class="freccia-ceneri precedente"
+            type="button"
+            onclick="cambiaOperaCenere(-1)"
+            aria-label="Opera precedente"
+            style="display: none;" 
+        >&#10094;</button>
+
+        <!-- FOTO SUCCESSIVA -->
+
+        <button
+            class="freccia-ceneri successiva"
+            type="button"
+            onclick="cambiaOperaCenere(1)"
+            aria-label="Opera successiva"
+            style="display: none;" 
+        >&#10095;</button>
+
+        <!-- CONTATORE - quando aggiungi opere dei aumentare il secondo 1 al numero delle opere visibili-->
+
+        <div class="contatore-ceneri">
+            <span id="contatoreCeneri">1 / 1</span>
+           
+        </div>
+
+    </div>
+
+
+    <!-- MINIATURE DELLE OPERE -->
+
+    <div
+        class="miniature-ceneri"
+        id="miniatureCeneri"
+    ></div>
+
+
+    <!-- INFORMAZIONI OPERA SELEZIONATA -->
+
+    <div class="contenuto">
+
+        <h2 id="titoloOperaCenere">
+             Opere che ci hanno lasciato e sono diventate cenere
+        </h2>
+
+        <p
+            class="descrizione"
+            id="descrizioneOperaCenere"
+        >
+            Opera che ha concluso il proprio ciclo vitale
+            ed è diventata cenere.
+        </p>
+
+        <div
+            class="data"
+            id="nascitaOperaCenere"
+        >
+            Data di nascita: 01/10/2026
+        </div>
+
+        <div
+            class="data"
+            id="morteOperaCenere"
+        >
+            Data di morte: 01/11/2026
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- ================================================= -->
+<!-- CSS GALLERIA OPERE CENERE                         -->
+<!-- ================================================= -->
+
+<style>
+
+.galleria-ceneri {
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f7f4f0;
+
+}
+
+.galleria-ceneri #fotoPrincipaleCeneri {
+
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
+    cursor: zoom-in;
+
+}
+
+
+/* FRECCE */
+
+.freccia-ceneri {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: rgba(0,0,0,0.55);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    z-index: 5;
+
+}
+
+.freccia-ceneri:hover {
+
+    background: rgba(0,0,0,0.85);
+
+}
+
+.freccia-ceneri.precedente {
+    left: 12px;
+}
+
+.freccia-ceneri.successiva {
+    right: 12px;
+}
+
+
+/* CONTATORE */
+
+.contatore-ceneri {
+
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(0,0,0,0.65);
+    color: white;
+
+    padding: 6px 12px;
+    border-radius: 20px;
+
+    font-size: 13px;
+
+}
+
+
+/* MINIATURE */
+
+.miniature-ceneri {
+
+    display: flex;
+    gap: 10px;
+
+    padding: 12px;
+
+    overflow-x: auto;
+
+    background: white;
+
+}
+
+.miniatura-cenere {
+
+    width: 85px;
+    height: 85px;
+
+    object-fit: cover;
+
+    border: 2px solid transparent;
+    border-radius: 6px;
+
+    cursor: pointer;
+    opacity: 0.65;
+
+    flex-shrink: 0;
+
+}
+
+.miniatura-cenere:hover,
+.miniatura-cenere.attiva {
+
+    opacity: 1;
+    border-color: #222;
+
+}
+
+</style>
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT OPERE CENERE                           -->
+<!-- ================================================= -->
+
+<script>
+
+// ================================================
+// ELENCO DI TUTTE LE OPERE BRUCIATE
+// ================================================
+
+// PER AGGIUNGERE UN'OPERA:
+// Copia un blocco e modifica foto, titolo e date.
+
+const opereCenere = [
+
+    {
+        foto: "Foto Vacum DK1.JPG",
+
+        titolo: "Opera Vacum DK1",
+
+        descrizione: "Opera che ha concluso il proprio ciclo vitale ed è diventata cenere.",
+
+        nascita: "01/10/2026",
+
+        morte: "01/11/2026",
+        nascosta: false
+    
+    },
+
+    {
+        foto: "Peni kiwi.JPG",
+
+        titolo: "Opera Peni Kiwi",
+
+        descrizione: "Opera che ha concluso il proprio ciclo vitale ed è diventata cenere.",
+
+        nascita: "03/11/2026",
+
+        morte: "03/12/2026",
+        nascosta: true
+    },
+
+    {
+        foto: "Vacum Ratto delle Sabine.JPG",
+
+        titolo: "Opera Vacum Ratto delle Sabine",
+
+        descrizione: "Opera che ha concluso il proprio ciclo vitale ed è diventata cenere.",
+
+        nascita: "02/12/2026",
+
+        morte: "01/01/2027",
+        nascosta: true
+    }
+
+];
+
+
+// ================================================
+// ELEMENTI HTML
+// ================================================
+
+const fotoPrincipaleCeneri =
+    document.getElementById("fotoPrincipaleCeneri");
+
+const miniatureCeneri =
+    document.getElementById("miniatureCeneri");
+
+const contatoreCeneri =
+    document.getElementById("contatoreCeneri");
+
+const titoloOperaCenere =
+    document.getElementById("titoloOperaCenere");
+
+const descrizioneOperaCenere =
+    document.getElementById("descrizioneOperaCenere");
+
+const nascitaOperaCenere =
+    document.getElementById("nascitaOperaCenere");
+
+const morteOperaCenere =
+    document.getElementById("morteOperaCenere");
+
+
+// ================================================
+// OPERA SELEZIONATA
+// ================================================
+const opereVisibili = opereCenere.filter(
+    opera => !opera.nascosta
+);
+
+let indiceOperaCenere = 0;
+
+
+// ================================================
+// MOSTRA OPERA SELEZIONATA 
+// ================================================
+
+function mostraOperaCenere(indice) {
+        // MOSTRA SOLO LA PRIMA OPERA
+   if (opereCenere[indice].nascosta) return;
+
+    const opera = opereCenere[indice];
+
+    indiceOperaCenere = indice;
+
+
+    // FOTO
+
+    fotoPrincipaleCeneri.src = opera.foto;
+
+    fotoPrincipaleCeneri.alt = opera.titolo;
+
+
+    // TITOLO
+
+    titoloOperaCenere.textContent = opera.titolo;
+
+
+    // DESCRIZIONE
+
+    descrizioneOperaCenere.textContent = opera.descrizione;
+
+
+    // DATE
+
+    nascitaOperaCenere.textContent =
+        "Data di nascita: " + opera.nascita;
+
+    morteOperaCenere.textContent =
+        "Data di morte: " + opera.morte;
+
+
+    // CONTATORE
+
+    contatoreCeneri.textContent =
+        (opereVisibili.indexOf(opera) + 1) + " / " + opereVisibili.length
+
+
+    // MINIATURE ATTIVE
+
+    miniatureCeneri
+        .querySelectorAll(".miniatura-cenere")
+        .forEach(function(miniatura, posizione) {
+
+            miniatura.classList.toggle(
+                "attiva",
+                posizione === indice
+            );
+
+        });
+
+}
+
+
+// ================================================
+// CAMBIA OPERA CON LE FRECCE
+// ================================================
+
+function cambiaOperaCenere(direzione) {
+
+    let posizione = opereVisibili.indexOf(
+        opereCenere[indiceOperaCenere]
+    );
+
+    posizione += direzione;
+
+    if (posizione >= opereVisibili.length) {
+        posizione = 0;
+    }
+
+    if (posizione < 0) {
+        posizione = opereVisibili.length - 1;
+    }
+
+    const nuovaOpera = opereVisibili[posizione];
+
+    const nuovoIndice = opereCenere.indexOf(nuovaOpera);
+
+    mostraOperaCenere(nuovoIndice);
+
+}
+
+
+// ================================================
+// CREA AUTOMATICAMENTE LE MINIATURE
+// ================================================
+
+function creaMiniatureCeneri() {
+
+    miniatureCeneri.innerHTML = "";
+
+    opereCenere.forEach(function(opera, indice) {
+        if (opera.nascosta) return;
+
+        const miniatura = document.createElement("img");
+
+        miniatura.src = opera.foto;
+
+        miniatura.alt = opera.titolo;
+
+        miniatura.className = "miniatura-cenere";
+
+        miniatura.addEventListener("click", function() {
+
+            mostraOperaCenere(indice);
+
+        });
+
+        miniatureCeneri.appendChild(miniatura);
+
+    });
+
+}
+
+
+// ================================================
+// AVVIO GALLERIA
+// ================================================
+
+creaMiniatureCeneri();
+
+mostraOperaCenere(0);
+
+</script>
+
+
+
+
+    
+
+</main>
+
+<!-- ===================================================== -->
+<!-- ZOOM FOTO                                             -->
+<!-- ===================================================== -->
+
+<div
+    id="zoomFoto"
+    class="zoom-foto"
+>
+
+    <button
+        id="chiudiZoom"
+        class="chiudi-zoom"
+        type="button"
+        aria-label="Chiudi immagine"
+    >
+
+        ×
+
+    </button>
+
+
+    <img
+        id="immagineZoom"
+        src=""
+        alt="Opera ingrandita"
+    >
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- MODALE                                               -->
+<!-- ===================================================== -->
+
+<div id="modal" class="modal">
+    <div class="modal-contenuto">
+
+        <button id="chiudiModal" class="chiudi" type="button" aria-label="Chiudi">
+            ×
+        </button>
+
+        <h2>
+            RICHIEDI INFORMAZIONI
+        </h2>
+
+        <div id="operaSelezionata" class="opera-selezionata">
+            <div class="nome-opera">
+                Opera
+            </div>
+            <div class="prezzo-opera">
+                Prezzo
+            </div>
+        </div>
+
+        <div class="testo-contatto" style="text-align: left; line-height: 1.5; margin: 15px 0;">
+            Per adottare l'opera prima dello scadere contattami direttamente:<br><br>
+            <strong>Modalità di acquisto e spedizione:</strong><br>
+            • <strong>Acquisto protetto (Subito / Wallapop):</strong> su richiesta creo subito l'annuncio dedicato per gestire pagamento sicuro e spedizione tracciata.<br>
+            • <strong>Spedizione diretta:</strong> pagamento tramite PayPal con spedizione tracciata.
+        </div>
+
+        <div class="social-modal">
+            
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/mr.burn_30days" target="_blank" class="instagram">
+                📷 CONTATTAMI SU INSTAGRAM
+            </a>
+
+            <!-- TIKTOK (nascosto finché non aggiungi il link e rimuovi display: none;) -->
+            <a href="INSERISCI_QUI_LINK_TIKTOK" target="_blank" class="tiktok" style="display: none;">
+                🎵 CONTATTAMI SU TIKTOK
+            </a>
+
+            <!-- EMAIL (nascosto finché non metti la tua email vera) -->
+            <a href="mailto:mrburnart30@gmail.com?subject=Adozione%20opera%20Mr.Burn" style="background: #333; >
+                ✉️ SCRIVIMI VIA EMAIL
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT                                            -->
+<!-- ===================================================== -->
+
+<script>
+
+
+
+/*
+===========================================================
+ IMPOSTAZIONI
+===========================================================
+*/
+
+
+const DURATA_GIORNI = 30;
+
+
+
+/*
+===========================================================
+ LINK SOCIAL
+===========================================================
+*/
+
+
+/*
+ * SOSTITUISCI QUESTI DUE LINK
+ * CON I TUOI PROFILI.
+ */
+
+
+const LINK_INSTAGRAM =
+    "https://www.instagram.com/mr.burn_30days";
+
+
+const LINK_TIKTOK =
+    "https://www.tiktok.com/@TUOPROFILO";
+
+
+
+/*
+===========================================================
+ ELEMENTI MODALE
+===========================================================
+*/
+
+
+const modal =
+    document.getElementById(
+        "modal"
+    );
+
+
+const chiudiModal =
+    document.getElementById(
+        "chiudiModal"
+    );
+
+
+const operaSelezionata =
+    document.getElementById(
+        "operaSelezionata"
+    );
+
+
+
+/*
+===========================================================
+ IMPOSTA LINK SOCIAL
+===========================================================
+*/
+
+
+document
+    .querySelector(
+        ".social-modal .instagram"
+    )
+    .href =
+        LINK_INSTAGRAM;
+
+
+document
+    .querySelector(
+        ".social-modal .tiktok"
+    )
+    .href =
+        LINK_TIKTOK;
+
+
+
+/*
+===========================================================
+ APERTURA MODALE
+===========================================================
+*/
+
+
+document
+    .querySelectorAll(
+        ".pulsante-richiesta"
+    )
+    .forEach(
+        function(pulsante) {
+
+
+            pulsante.addEventListener(
+                "click",
+                function() {
+
+
+                    /*
+                     * Recupera prodotto
+                     */
+
+                    const prodotto =
+                        pulsante.closest(
+                            ".prodotto"
+                        );
+
+
+                    /*
+                     * Recupera nome
+                     */
+
+                    const nome =
+                        prodotto
+                            .querySelector("h2")
+                            .innerText
+                            .trim();
+
+
+                    /*
+                     * Recupera prezzo
+                     */
+
+                    const prezzo =
+                        prodotto
+                            .querySelector(".prezzo")
+                            .innerText
+                            .trim();
+
+
+                    /*
+                     * Mostra dati
+                     */
+
+                    operaSelezionata.innerHTML =
+
+                        '<div class="nome-opera">' +
+
+                        nome +
+
+                        '</div>' +
+
+                        '<div class="prezzo-opera">' +
+
+                        prezzo +
+
+                        '</div>';
+
+
+                    /*
+                     * Apri modale
+                     */
+
+                    modal.classList.add(
+                        "attivo"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+
+/*
+===========================================================
+ CHIUSURA MODALE
+===========================================================
+*/
+
+
+chiudiModal.addEventListener(
+    "click",
+    function() {
+
+        modal.classList.remove(
+            "attivo"
+        );
+
+    }
+);
+
+
+
+/*
+===========================================================
+ CHIUSURA CLICCANDO FUORI
+===========================================================
+*/
+
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+
+        if (
+            event.target === modal
+        ) {
+
+            modal.classList.remove(
+                "attivo"
+            );
+
+        }
+
+    }
+);
+
+
+
+/*
+===========================================================
+ CHIUSURA CON ESC
+===========================================================
+*/
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            modal.classList.remove(
+                "attivo"
+            );
+
+        }
+
+    }
+);
+
+
+
+/*
+===========================================================
+ FUNZIONE TIMER
+===========================================================
+*/
+
+
+function aggiornaCatalogo() {
+
+
+    const prodotti =
+        document.querySelectorAll(
+            ".prodotto"
+        );
+
+
+    const adesso =
+        new Date();
+
+
+    prodotti.forEach(
+        function(prodotto) {
+
+
+            /*
+             * =========================================
+             * DATA INIZIO
+             * =========================================
+             */
+
+            const dataInizioStringa =
+                prodotto.dataset.inizio;
+
+
+            const dataInizio =
+                new Date(
+                    dataInizioStringa +
+                    "T00:00:00"
+                );
+
+
+
+            /*
+             * =========================================
+             * GIORNO 0
+             * =========================================
+             */
+
+            const inizioGiornoZero =
+                new Date(
+                    dataInizio
+                );
+
+
+            inizioGiornoZero.setDate(
+                inizioGiornoZero.getDate() +
+                DURATA_GIORNI
+            );
+
+
+
+            /*
+             * =========================================
+             * FINE GIORNO 0
+             * =========================================
+             */
+
+            const fineGiornoZero =
+                new Date(
+                    inizioGiornoZero
+                );
+
+
+            fineGiornoZero.setDate(
+                fineGiornoZero.getDate() +
+                1
+            );
+
+
+
+            /*
+             * =========================================
+             * ELEMENTI
+             * =========================================
+             */
+
+            const timer =
+                prodotto.querySelector(
+                    ".timer"
+                );
+
+
+            const pulsante =
+                prodotto.querySelector(
+                    ".pulsante-richiesta"
+                );
+
+
+
+            /*
+             * =========================================
+             * PRIMA DELLA DATA
+             * =========================================
+             */
+
+            if (
+                adesso < dataInizio
+            ) {
+
+
+                const differenza =
+                    dataInizio.getTime() -
+                    adesso.getTime();
+
+
+                const giorni =
+                    Math.ceil(
+                        differenza /
+                        (
+                            1000 *
+                            60 *
+                            60 *
+                            24
+                        )
+                    );
+
+
+                timer.innerHTML =
+
+                    "NON ANCORA DISPONIBILE<br>" +
+
+                    "Disponibile tra " +
+
+                    giorni +
+
+                    " giorni";
+
+
+                timer.classList.add(
+                    "non-disponibile"
+                );
+
+
+                timer.classList.remove(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "scaduto"
+                );
+
+
+                pulsante.classList.add(
+                    "disabilitato"
+                );
+
+
+                return;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * DOPO LA SCADENZA
+             * =========================================
+             */
+
+            if (
+                adesso >= fineGiornoZero
+            ) {
+
+
+                timer.innerHTML =
+                    "⛔ DISPONIBILITÀ TERMINATA";
+
+
+                timer.classList.remove(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "non-disponibile"
+                );
+
+
+                timer.classList.add(
+                    "scaduto"
+                );
+
+
+                pulsante.classList.add(
+                    "disabilitato"
+                );
+
+
+                return;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * CALCOLO DEL GIORNO
+             * =========================================
+             */
+
+            const differenzaInizio =
+                adesso.getTime() -
+                dataInizio.getTime();
+
+
+            const giorniTrascorsi =
+                Math.floor(
+                    differenzaInizio /
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
+                );
+
+
+            let giorno =
+                DURATA_GIORNI -
+                giorniTrascorsi;
+
+
+            if (
+                giorno < 0
+            ) {
+
+                giorno = 0;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * TEMPO RIMANENTE
+             * =========================================
+             */
+
+            const differenza =
+                fineGiornoZero.getTime() -
+                adesso.getTime();
+
+
+            const ore =
+                Math.floor(
+                    (
+                        differenza /
+                        (
+                            1000 *
+                            60 *
+                            60
+                        )
+                    ) % 24
+                );
+
+
+            const minuti =
+                Math.floor(
+                    (
+                        differenza /
+                        (
+                            1000 *
+                            60
+                        )
+                    ) % 60
+                );
+
+
+            const secondi =
+                Math.floor(
+                    (
+                        differenza /
+                        1000
+                    ) % 60
+                );
+
+
+
+            /*
+             * =========================================
+             * GIORNO 0
+             * =========================================
+             */
+
+            if (
+                giorno === 0
+            ) {
+
+
+                timer.classList.add(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "scaduto"
+                );
+
+
+                timer.classList.remove(
+                    "non-disponibile"
+                );
+
+
+                timer.innerHTML =
+
+                    "⚠️ GIORNO 0<br>" +
+
+                    ore +
+
+                    " ore " +
+
+                    minuti +
+
+                    " minuti " +
+
+                    secondi +
+
+                    " secondi";
+
+            }
+
+
+            /*
+             * =========================================
+             * GIORNI NORMALI
+             * =========================================
+             */
+
+            else {
+
+
+                timer.classList.remove(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "scaduto"
+                );
+
+
+                timer.classList.remove(
+                    "non-disponibile"
+                );
+
+
+                timer.innerHTML =
+
+                    "GIORNO " +
+
+                    giorno +
+
+                    "<br>" +
+
+                    ore +
+
+                    " ore " +
+
+                    minuti +
+
+                    " minuti " +
+
+                    secondi +
+
+                    " secondi";
+
+            }
+
+
+
+            /*
+             * =========================================
+             * PULSANTE ATTIVO
+             * =========================================
+             */
+
+            pulsante.classList.remove(
+                "disabilitato"
+            );
+
+        }
+    );
+
+}
+
+
+
+/*
+===========================================================
+ AVVIO
+===========================================================
+*/
+
+
+aggiornaCatalogo();
+
+
+/*
+ * Aggiornamento ogni secondo
+ */
+
+setInterval(
+    aggiornaCatalogo,
+    1000
+);
+
+
+
+
+/*
+/*
+===========================================================
+ ZOOM FOTO
+===========================================================
+*/
+
+const zoomFoto = document.getElementById("zoomFoto");
+
+const immagineZoom = document.getElementById("immagineZoom");
+
+const chiudiZoom = document.getElementById("chiudiZoom");
+
+
+// APERTURA ZOOM
+
+document.addEventListener("click", function(event) {
+
+    const foto = event.target.closest(
+        ".foto-prodotto, #fotoPrincipaleCeneri, .miniatura-cenere"
+    );
+
+    if (!foto) return;
+
+    immagineZoom.src = foto.src;
+
+    immagineZoom.alt = foto.alt;
+
+    zoomFoto.classList.add("attivo");
+
+});
+
+
+// CHIUSURA CON X
+
+chiudiZoom.addEventListener("click", function() {
+
+    zoomFoto.classList.remove("attivo");
+
+});
+
+
+// CHIUSURA FUORI DALL'IMMAGINE
+
+zoomFoto.addEventListener("click", function(event) {
+
+    if (event.target === zoomFoto) {
+
+        zoomFoto.classList.remove("attivo");
+
+    }
+
+});
+
+
+// CHIUSURA CON ESC
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        zoomFoto.classList.remove("attivo");
+
+    }
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
