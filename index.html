@@ -694,28 +694,41 @@
 }
 
 
-@media (max-width: 600px) {
+ @media (max-width: 600px) {
 
     .catalogo {
-
         grid-template-columns: 1fr;
-
         padding: 15px;
-
     }
-
 
     .modal {
-
         padding: 10px;
-
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+        height: 100vh;
+        height: 100dvh;
     }
 
+    .modal.attivo {
+        align-items: flex-start;
+    }
 
     .modal-contenuto {
+        padding: 55px 20px 25px;
+        margin: 10px auto;
+        max-height: calc(100dvh - 40px);
+        overflow-y: auto;
+        width: 100%;
+    }
 
-        padding: 25px 20px;
-
+    .chiudi {
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        font-size: 32px;
+        padding: 5px 10px;
+        z-index: 10;
     }
 
 }
