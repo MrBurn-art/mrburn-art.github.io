@@ -1959,393 +1959,171 @@ document.addEventListener(
 
 function aggiornaCatalogo() {
 
+    const prodotti = document.querySelectorAll(".prodotto");
+    const adesso = new Date();
 
-    const prodotti =
-        document.querySelectorAll(
-            ".prodotto"
+    prodotti.forEach(function(prodotto) {
+
+        const dataInizio = new Date(
+            prodotto.dataset.inizio + "T00:00:00"
         );
 
+        const inizioGiornoZero = new Date(dataInizio);
 
-    const adesso =
-        new Date();
+        inizioGiornoZero.setDate(
+            inizioGiornoZero.getDate() + DURATA_GIORNI
+        );
 
+        const fineGiornoZero = new Date(inizioGiornoZero);
 
-    prodotti.forEach(
-        function(prodotto) {
+        fineGiornoZero.setDate(
+            fineGiornoZero.getDate() + 1
+        );
 
+        const timer = prodotto.querySelector(".timer");
+        const pulsante = prodotto.querySelector(".pulsante-richiesta");
 
-            /*
-             * =========================================
-             * DATA INIZIO
-             * =========================================
-             */
+        if (!timer || !pulsante) return;
 
-            const dataInizioStringa =
-                prodotto.dataset.inizio;
+        // PRIMA DELLA DATA DI INIZIO
 
+        if (adesso < dataInizio) {
 
-            const dataInizio =
-                new Date(
-                    dataInizioStringa +
-                    "T00:00:00"
-                );
+            const differenza = dataInizio.getTime() - adesso.getTime();
 
-
-
-            /*
-             * =========================================
-             * GIORNO 0
-             * =========================================
-             */
-
-            const inizioGiornoZero =
-                new Date(
-                    dataInizio
-                );
-
-
-            inizioGiornoZero.setDate(
-                inizioGiornoZero.getDate() +
-                DURATA_GIORNI
+            const giorni = Math.ceil(
+                differenza / (1000 * 60 * 60 * 24)
             );
 
-
-
-            /*
-             * =========================================
-             * FINE GIORNO 0
-             * =========================================
-             */
-
-            const fineGiornoZero =
-                new Date(
-                    inizioGiornoZero
-                );
-
-
-            fineGiornoZero.setDate(
-                fineGiornoZero.getDate() +
-                1
-            );
-
-
-
-            /*
-             * =========================================
-             * ELEMENTI
-             * =========================================
-             */
-
-            const timer =
-                prodotto.querySelector(
-                    ".timer"
-                );
-
-
-            const pulsante =
-                prodotto.querySelector(
-                    ".pulsante-richiesta"
-                );
-
-
-
-            /*
-             * =========================================
-             * PRIMA DELLA DATA
-             * =========================================
-             */
-
-            if (
-                adesso < dataInizio
-            ) {
-
-
-                const differenza =
-                    dataInizio.getTime() -
-                    adesso.getTime();
-
-
-                const giorni =
-                    Math.ceil(
-                        differenza /
-                        (
-                            1000 *
-                            60 *
-                            60 *
-                            24
-                        )
-                    );
-
-
-                timer.innerHTML =
-
-                    "NON ANCORA DISPONIBILE<br>" +
-
-                    "Disponibile tra " +
-
-                    giorni +
-
-                    " giorni";
-
-
-                timer.classList.add(
-                    "non-disponibile"
-                );
-
-
-                timer.classList.remove(
-                    "giorno-zero"
-                );
-
-
-                timer.classList.remove(
-                    "scaduto"
-                );
-
-
-                pulsante.classList.add(
-                    "disabilitato"
-                );
-
-
-                return;
-
-            }
-
-
-
-            /*
-             * =========================================
-             * DOPO LA SCADENZA
-             * =========================================
-             */
-
-            if (
-                adesso >= fineGiornoZero
-            ) {
-
-
-                timer.innerHTML =
-                    "⛔ DISPONIBILITÀ TERMINATA";
-
-
-                timer.classList.remove(
-                    "giorno-zero"
-                );
-
-
-                timer.classList.remove(
-                    "non-disponibile"
-                );
-
-
-                timer.classList.add(
-                    "scaduto"
-                );
-
-
-                pulsante.classList.add(
-                    "disabilitato"
-                );
-
-
-                return;
-
-            }
-
-
-
-            /*
-             * =========================================
-             * CALCOLO DEL GIORNO
-             * =========================================
-             */
-
-            const differenzaInizio =
-                adesso.getTime() -
-                dataInizio.getTime();
-
-
-            const giorniTrascorsi =
-                Math.floor(
-                    differenzaInizio /
-                    (
-                        1000 *
-                        60 *
-                        60 *
-                        24
-                    )
-                );
-
-
-            let giorno =
-                DURATA_GIORNI -
-                giorniTrascorsi;
-
-
-            if (
-                giorno < 0
-            ) {
-
-                giorno = 0;
-
-            }
-
-
-
-            /*
-             * =========================================
-             * TEMPO RIMANENTE
-             * =========================================
-             */
-
-            const differenza =
-                fineGiornoZero.getTime() -
-                adesso.getTime();
-
-
-            const ore =
-                Math.floor(
-                    (
-                        differenza /
-                        (
-                            1000 *
-                            60 *
-                            60
-                        )
-                    ) % 24
-                );
-
-
-            const minuti =
-                Math.floor(
-                    (
-                        differenza /
-                        (
-                            1000 *
-                            60
-                        )
-                    ) % 60
-                );
-
-
-            const secondi =
-                Math.floor(
-                    (
-                        differenza /
-                        1000
-                    ) % 60
-                );
-
-
-
-            /*
-             * =========================================
-             * GIORNO 0
-             * =========================================
-             */
-
-            if (
-                giorno === 0
-            ) {
-
-
-                timer.classList.add(
-                    "giorno-zero"
-                );
-
-
-                timer.classList.remove(
-                    "scaduto"
-                );
-
-
-                timer.classList.remove(
-                    "non-disponibile"
-                );
-
-
-                timer.innerHTML =
-
-                    "⚠️ GIORNO 0<br>" +
-
-                    ore +
-
-                    " ore " +
-
-                    minuti +
-
-                    " minuti " +
-
-                    secondi +
-
-                    " secondi";
-
-            }
-
-
-            /*
-             * =========================================
-             * GIORNI NORMALI
-             * =========================================
-             */
-
-            else {
-
-
-                timer.classList.remove(
-                    "giorno-zero"
-                );
-
-
-                timer.classList.remove(
-                    "scaduto"
-                );
-
-
-                timer.classList.remove(
-                    "non-disponibile"
-                );
-
-
-                timer.innerHTML =
-
-                    "GIORNO " +
-
-                    giorno +
-
-                    "<br>" +
-
-                    ore +
-
-                    " ore " +
-
-                    minuti +
-
-                    " minuti " +
-
-                    secondi +
-
-                    " secondi";
-
-            }
-
-
-
-            /*
-             * =========================================
-             * PULSANTE ATTIVO
-             * =========================================
-             */
-
-            pulsante.classList.remove(
-                "disabilitato"
-            );
-
+            timer.innerHTML = `
+                <div class="timer-titolo">MR.BURN · IN ATTESA</div>
+                <div class="timer-messaggio">NON ANCORA DISPONIBILE</div>
+                <div class="timer-giorno">DISPONIBILE TRA ${giorni} GIORNI</div>
+            `;
+
+            timer.classList.remove("giorno-zero", "scaduto");
+            timer.classList.add("non-disponibile");
+            pulsante.classList.add("disabilitato");
+
+            return;
         }
-    );
+
+        // DOPO LA SCADENZA
+
+        if (adesso >= fineGiornoZero) {
+
+            timer.innerHTML = `
+                <div class="timer-titolo">MR.BURN · FINE DEL VIAGGIO</div>
+                <div class="timer-giorno">IL TEMPO È SCADUTO</div>
+                <div class="timer-messaggio">ORA DIVENTERÀ CENERE.</div>
+            `;
+
+            timer.classList.remove("giorno-zero", "non-disponibile");
+            timer.classList.add("scaduto");
+            pulsante.classList.add("disabilitato");
+
+            return;
+        }
+
+        // CALCOLO DEL GIORNO
+
+        const differenzaInizio = adesso.getTime() - dataInizio.getTime();
+
+        const giorniTrascorsi = Math.floor(
+            differenzaInizio / (1000 * 60 * 60 * 24)
+        );
+
+        const giorno = Math.max(
+            0,
+            DURATA_GIORNI - giorniTrascorsi
+        );
+
+        // TEMPO RIMANENTE
+
+        const differenza = fineGiornoZero.getTime() - adesso.getTime();
+
+        const ore = Math.floor(
+            (differenza / (1000 * 60 * 60)) % 24
+        );
+
+        const minuti = Math.floor(
+            (differenza / (1000 * 60)) % 60
+        );
+
+        const secondi = Math.floor(
+            (differenza / 1000) % 60
+        );
+
+        // AVANZAMENTO DELLA VITA
+
+        const percentuale = Math.min(
+            100,
+            Math.max(0, (giorniTrascorsi / DURATA_GIORNI) * 100)
+        );
+
+        const messaggio = giorno <= 5
+            ? "IL TEMPO STA FINENDO."
+            : "QUEST'OPERA ASPETTA UNA NUOVA CASA.";
+
+        // STATO DEL TIMER
+
+        timer.classList.remove("scaduto", "non-disponibile");
+
+        if (giorno === 0) {
+            timer.classList.add("giorno-zero");
+        } else {
+            timer.classList.remove("giorno-zero");
+        }
+
+        // VISUALIZZAZIONE
+
+        timer.innerHTML = `
+            <div class="timer-titolo">
+                MR.BURN · TEMPO DI VITA
+            </div>
+
+            <div class="timer-giorno">
+                ${giorno === 0 ? "ULTIME ORE" : "GIORNO " + giorno + " / " + DURATA_GIORNI}
+            </div>
+
+            <div class="timer-barra">
+                <div class="timer-avanzamento"
+                     style="width:${percentuale}%">
+                </div>
+            </div>
+
+            <div class="timer-unita">
+                <div>
+                    <span class="timer-numero">${String(ore).padStart(2, "0")}</span>
+                    <span class="timer-etichetta">ORE</span>
+                </div>
+
+                <div>
+                    <span class="timer-numero">${String(minuti).padStart(2, "0")}</span>
+                    <span class="timer-etichetta">MINUTI</span>
+                </div>
+
+                <div>
+                    <span class="timer-numero">${String(secondi).padStart(2, "0")}</span>
+                    <span class="timer-etichetta">SECONDI</span>
+                </div>
+            </div>
+
+            <div class="timer-messaggio">
+                ${giorno === 0
+                    ? "ULTIMA POSSIBILITÀ DI SALVARLA."
+                    : messaggio}
+            </div>
+        `;
+
+        // PULSANTE ATTIVO
+
+        pulsante.classList.remove("disabilitato");
+
+    });
 
 }
+
 
 
 
