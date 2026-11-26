@@ -34,7 +34,7 @@
     >
 
 
-    <title>Mr.Burn Catalogue</title>
+   <title>MR.BURN | Niente scompare davvero</title>
 
 
     <!-- ================================================= -->
@@ -142,25 +142,48 @@
 
 
 
-        /* ================================================= */
-        /* FOTO                                               */
-        /* ================================================= */
+      /* ================================================= */
+/* FOTO OPERE MR.BURN                                */
+/* ================================================= */
 
-        .foto-prodotto {
+.foto-prodotto {
 
-            display: block;
+    display: block;
 
-            width: 100%;
+    width: 100%;
 
-            height: auto !important;
+    height: 380px;
 
-            max-width: 100%;
+    max-width: 100%;
 
-            object-fit: contain;
+    object-fit: contain;
 
-            cursor: zoom-in;
+    object-position: center;
 
-        }
+    background: #151513;
+
+    padding: 12px;
+
+    cursor: zoom-in;
+
+    transition: transform 0.4s ease;
+
+}
+
+.foto-prodotto:hover {
+
+    transform: scale(1.02);
+
+}
+        @media (max-width: 600px) {
+
+    .foto-prodotto {
+
+        height: 300px;
+
+    }
+
+}
 
         /* ================================================= */
         /* CONTENUTO                                          */
@@ -224,100 +247,103 @@
 
 
 
-        /* ================================================= */
-        /* TIMER                                              */
-        /* ================================================= */
+     /* ================================================= */
+/* MR.BURN - COUNTDOWN                               */
+/* ================================================= */
 
-        .timer {
+.timer {
+    background: #292724;
+    color: #f0eee9;
+    border: 1px solid #625044;
+    border-radius: 3px;
+    padding: 16px 12px;
+    margin: 18px 0;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+    box-shadow: 0 0 12px rgba(185, 67, 49, 0.12);
+    transition: background 0.3s ease;
+}
 
-            margin: 20px 0;
+.timer.giorno-zero {
+    background: #4a241c;
+    color: #ffb29e;
+    border: 1px solid #b94331;
+    box-shadow: 0 0 18px rgba(211, 75, 55, 0.25);
+}
 
-            padding: 14px;
+/* ULTIMI 5 GIORNI */
 
-            text-align: center;
+.timer.ultimi-giorni {
+    background: #211815;
+    border-color: #b94331;
+    box-shadow: 0 0 18px rgba(211,75,55,0.22);
+}
 
-            background: #f3eee8;
+.timer.ultimi-giorni .timer-avanzamento {
+    background: #e0523d;
+}
 
-            border-radius: 8px;
+.timer.ultimi-giorni .timer-numero {
+    color: #ffb29e;
+}
 
-            font-weight: bold;
+.timer.scaduto {
+    background: #292020;
+    color: #e68b7b;
+    border: 1px solid #67372e;
+}
 
-            font-size: 14px;
-
-        }
-
-
-        .timer.giorno-zero {
-
-            background: #fff3cd;
-
-            color: #856404;
-
-        }
-
-
-        .timer.scaduto {
-
-            background: #f2dede;
-
-            color: #a94442;
-
-        }
-
-
-        .timer.non-disponibile {
-
-            background: #eeeeee;
-
-            color: #666;
-
-        }
-
+.timer.non-disponibile {
+    background: #292724;
+    color: #aaa39a;
+    border: 1px solid #49443d;
+}
 
 
         /* ================================================= */
         /* PULSANTE RICHIESTA                                 */
         /* ================================================= */
 
-        .pulsante-richiesta {
+.pulsante-richiesta {
 
-            display: block;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
 
-            width: 100%;
+    background: #222;
+    color: white;
 
-            padding: 15px;
+    text-align: center;
+    font-weight: bold;
 
-            border-radius: 7px;
+    border: 1px solid #b94331;
 
-            background: #222;
+    cursor: pointer;
+    font-size: 15px;
 
-            color: white;
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
 
-            text-align: center;
+.pulsante-richiesta:hover {
 
-            font-weight: bold;
+    background: #3a211c;
 
-            border: none;
+    border-color: #e47761;
 
-            cursor: pointer;
+    box-shadow:
+        0 0 10px rgba(211,75,55,0.35),
+        0 0 20px rgba(211,75,55,0.20);
 
-            font-size: 15px;
-
-            transition:
-                background 0.2s ease,
-                transform 0.1s ease;
-
-        }
-
-
-        .pulsante-richiesta:hover {
-
-            background: #444;
-
-            transform: translateY(-1px);
-
-        }
-
+    transform: translateY(-2px);
+}
 
         .pulsante-richiesta.disabilitato {
 
@@ -693,6 +719,352 @@
     }
 
 }
+/* =================================
+   MR.BURN - NUOVA IDENTITA' VISIVA
+================================= */
+
+body {
+    background: #111110;
+    color: #eeeeea;
+    font-family: Arial, sans-serif;
+}
+
+header.hero {
+    background: #111110;
+    text-align: center;
+    padding: 80px 20px 65px;
+}
+
+.hero-logo {
+    font-size: clamp(48px, 9vw, 90px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #ffffff;
+}
+
+.hero-slogan {
+    color: #d34b37;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-subtitle {
+    color: #aaaaaa;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin: 25px 0;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 28px;
+    border: 1px solid #d34b37;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.hero-button:hover {
+    background: #d34b37;
+}
+
+.manifesto {
+    max-width: 760px;
+    margin: 0 auto 65px;
+    padding: 40px 25px;
+    text-align: center;
+    border-top: 1px solid #444444;
+    border-bottom: 1px solid #444444;
+    line-height: 1.9;
+    color: #bbbbbb;
+}
+
+.manifesto h2 {
+    color: #ffffff;
+    letter-spacing: 3px;
+    font-size: 25px;
+}
+
+.manifesto strong {
+    display: block;
+    color: #d34b37;
+    margin-top: 25px;
+    letter-spacing: 3px;
+}
+
+@media (max-width: 600px) {
+    header.hero {
+        padding: 55px 15px;
+    }
+
+    .hero-logo {
+        letter-spacing: 4px;
+    }
+
+    .manifesto {
+        margin: 0 15px 40px;
+        padding: 30px 15px;
+    }
+}
+/* =================================
+   MR.BURN - SCHEDE DELLE OPERE
+================================= */
+
+.prodotto {
+    background: #1c1c1a;
+    border: 1px solid #383632;
+    border-radius: 3px;
+    box-shadow: none;
+    padding-bottom: 20px;
+    color: #eeeeea;
+}
+
+.prodotto h2 {
+    color: #ffffff;
+    font-size: 21px;
+}
+
+.contenuto {
+    padding: 22px;
+}
+
+.descrizione {
+    color: #b5b2ad;
+    line-height: 1.7;
+}
+
+.prezzo {
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.data {
+    color: #99938c;
+}
+
+.timer {
+    background: #292724;
+    color: #eeeeea;
+    border: 1px solid #49443d;
+    border-radius: 3px;
+}
+
+.timer.giorno-zero {
+    background: #4a241c;
+    color: #ffb29e;
+}
+
+.timer.scaduto {
+    background: #292020;
+    color: #e68b7b;
+}
+
+.pulsante-richiesta {
+    background: #b94331;
+    color: #ffffff;
+    border-radius: 2px;
+    letter-spacing: 1px;
+}
+
+.pulsante-richiesta:hover {
+    background: #d34b37;
+}
+/* =================================
+   MODALE MR.BURN - GRAFICA
+================================= */
+
+.modal-contenuto {
+    background: #1c1c1a;
+    color: #eeeeea;
+    border: 1px solid #51463d;
+    border-radius: 4px;
+}
+
+.modal-contenuto h2 {
+    color: #d34b37;
+    letter-spacing: 2px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.opera-selezionata {
+    background: #292724;
+    border: 1px solid #49443d;
+    color: #ffffff;
+    padding: 18px;
+}
+
+.nome-opera {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.prezzo-opera {
+    color: #e47761;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.testo-contatto {
+    color: #c4c0ba;
+    text-align: left;
+    line-height: 1.7;
+    margin: 20px 0;
+}
+
+.testo-contatto strong {
+    color: #ffffff;
+}
+
+.social-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-modal a {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background: #b94331;
+    border-radius: 3px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.social-modal a:hover {
+    background: #d34b37;
+}
+
+.social-modal .email {
+    background: #33312e;
+    border: 1px solid #62574d;
+}
+
+.social-modal .email:hover {
+    background: #49443d;
+}
+
+.firma-modal {
+    color: #938b82;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.chiudi {
+    color: #ffffff;
+}
+        
+/* =====================================
+   MR.BURN - COUNTDOWN ARTISTICO
+===================================== */
+
+.timer {
+    background: #171614;
+    border: 1px solid #51443a;
+    border-radius: 3px;
+    padding: 22px 18px;
+    margin: 24px 0 18px;
+    text-align: center;
+    color: #eeeeea;
+    box-shadow: 0 0 18px rgba(185,67,49,0.10);
+}
+
+.timer-titolo {
+    color: #d34b37;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.timer-giorno {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+.timer.giorno-zero .timer-giorno {
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+.timer-barra {
+    height: 5px;
+    background: #49443d;
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+.timer-avanzamento {
+    height: 100%;
+    background: #b94331;
+    transition: width 0.8s ease;
+}
+
+.timer-unita {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.timer-numero {
+    font-size: 30px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-etichetta {
+    display: block;
+    color: #99938c;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.timer-messaggio {
+    color: #d34b37;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.timer.giorno-zero {
+    background: #241512;
+    border-color: #b94331;
+    box-shadow: 0 0 22px rgba(211,75,55,0.25);
+}
+
+.timer.giorno-zero .timer-numero {
+    color: #ffb29e;
+}
+
+.timer.scaduto {
+    background: #211b19;
+    color: #e47761;
+}
+
+@media (max-width: 600px) {
+
+    .timer {
+        padding: 18px 12px;
+    }
+
+    .timer-numero {
+        font-size: 25px;
+    }
+
+    .timer-unita {
+        gap: 12px;
+    }
+
+}
 
     </style>
 
@@ -704,37 +1076,61 @@
 
 
 
+
 <!-- ===================================================== -->
-<!-- HEADER                                                -->
+<!-- HEADER MR.BURN                                       -->
 <!-- ===================================================== -->
 
-<header>
+<header class="hero">
 
-    <h1>MR.BURN</h1>
+    <div class="hero-logo">MR.BURN</div>
 
-    <p>CATALOGUE</p>
+    <p class="hero-slogan">
+        SALVALO O LASCIALO BRUCIARE.
+    </p>
+
+    <p class="hero-subtitle">
+        OGNI OPERA HA UNA SCADENZA.
+    </p>
+
+    <a href="#catalogo" class="hero-button">
+        SCOPRI LE OPERE ↓
+    </a>
 
 </header>
- <div class="manifesto" style="max-width: 720px; margin: 20px auto 40px auto; padding: 20px; text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333; line-height: 1.6;">
-    <p style="font-size: 1.05rem; margin-bottom: 12px;">
-      <strong>Ogni opera nasce con un conto alla rovescia di 30 giorni.</strong><br>
-      Se viene adottata entro la scadenza, entra a far parte della tua collezione privata come pezzo unico.
-    </p>
-    <p style="font-size: 0.95rem; opacity: 0.85; margin: 0;">
-      Se resta invenduta allo scadere del <strong>Giorno 0</strong>, viene bruciata: le sue ceneri vengono disperse e impastate in <em>seed bomb</em> per far nascere nuovi fiori nei prati.
-    </p>
-  </div>
+<!-- ===================================================== -->
+<!-- MANIFESTO                                             -->
+<!-- ===================================================== -->
 
+<div class="manifesto">
 
+    <h2>NIENTE SCOMPARE DAVVERO.</h2>
+
+    <p>
+        Ogni opera ha una vita.
+        Trenta giorni per trovare una nuova casa.
+    </p>
+
+    <p>
+        Se viene adottata, continua il suo viaggio,
+        entrando a far parte di una nuova storia.
+    </p>
+
+    <p>
+        Se nessuno la sceglie, viene bruciata.
+        Le sue ceneri diventano seed bomb,
+        pronte a dare vita a nuovi fiori.
+    </p>
+
+    <strong>TUTTO SI TRASFORMA.</strong>
+
+</div>
 
 <!-- ===================================================== -->
 <!-- CATALOGO                                              -->
 <!-- ===================================================== -->
 
-<main class="catalogo">
-
-
-
+<main class="catalogo" id="catalogo">
   
 
     <!-- ================================================= -->
@@ -789,7 +1185,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -799,7 +1195,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+                VOGLIO ADOTTARLA
 
             </button>
 
@@ -861,7 +1257,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -871,7 +1267,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+                VOGLIO ADOTTARLA
 
             </button>
 
@@ -930,7 +1326,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -940,7 +1336,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+                VOGLIO ADOTTARLA
 
             </button>
 
@@ -998,7 +1394,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -1008,7 +1404,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+               VOGLIO ADOTTARLA
 
             </button>
 
@@ -1067,7 +1463,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -1077,7 +1473,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+                VOGLIO ADOTTARLA
 
             </button>
 
@@ -1136,7 +1532,7 @@
 
             <div class="timer">
 
-                Calcolo disponibilità...
+                CALCOLO DEL TEMPO RIMASTO...
 
             </div>
 
@@ -1146,7 +1542,7 @@
                 type="button"
             >
 
-                ADOTTA PRIMA DELLO SCADERE
+                VOGLIO ADOTTARLA
 
             </button>
 
@@ -1161,7 +1557,23 @@
 <!-- SEZIONE OPERE CENERE    - rimuovi style="display: none;" per gestire più foto nella galleria -->
 <!-- ================================================= -->
 
+
 <article class="prodotto opera-cenere">
+
+    <!-- TITOLO SEZIONE OPERE BRUCIATE -->
+
+    <div class="titolo-opere-bruciate">
+
+        <h2>LE OPERE DOPO IL FUOCO</h2>
+
+        <p>
+            Ciò che resta. Ciò che cambia.
+            Ciò che rinasce.
+        </p>
+
+        <div class="linea-opere"></div>
+
+    </div>
 
     <!-- GALLERIA FOTOGRAFICA -->
 
@@ -1213,19 +1625,11 @@
 
     <!-- INFORMAZIONI OPERA SELEZIONATA -->
 
-    <div class="contenuto">
+  <div class="contenuto contenuto-cenere">
+        <h2 id="titoloOperaCenere"></h2>
+      <div class="linea-info-cenere"></div>
 
-        <h2 id="titoloOperaCenere">
-             Opere che ci hanno lasciato e sono diventate cenere
-        </h2>
-
-        <p
-            class="descrizione"
-            id="descrizioneOperaCenere"
-        >
-            Opera che ha concluso il proprio ciclo vitale
-            ed è diventata cenere.
-        </p>
+ 
 
         <div
             class="data"
@@ -1240,7 +1644,13 @@
         >
             Data di morte: 01/11/2026
         </div>
-
+       <p
+            class="descrizione"
+            id="descrizioneOperaCenere"
+        >
+            Opera che ha concluso il proprio ciclo vitale
+            ed è diventata cenere.
+        </p>
     </div>
 
 </article>
@@ -1253,11 +1663,10 @@
 <style>
 
 .galleria-ceneri {
-
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #f7f4f0;
+    background: #151513;
 
 }
 
@@ -1265,14 +1674,19 @@
 
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 650px;
+    height: 380px;
+    max-width: 100%;
     object-fit: contain;
+    object-position: center;
+    background: #151513;
+    padding: 12px;
     cursor: zoom-in;
-
+    transition: transform 0.4s ease;
 }
+.galleria-ceneri #fotoPrincipaleCeneri:hover {
 
-
+    transform: scale(1.04);
+}
 /* FRECCE */
 
 .freccia-ceneri {
@@ -1335,31 +1749,23 @@
 /* MINIATURE */
 
 .miniature-ceneri {
-
     display: flex;
     gap: 10px;
-
     padding: 12px;
-
     overflow-x: auto;
-
-    background: white;
-
+    background: #1c1c1a;
 }
 
 .miniatura-cenere {
-
     width: 85px;
     height: 85px;
-
-    object-fit: cover;
-
+    object-fit: contain;
+    background: #151513;
+    padding: 4px;
     border: 2px solid transparent;
-    border-radius: 6px;
-
+    border-radius: 3px;
     cursor: pointer;
     opacity: 0.65;
-
     flex-shrink: 0;
 
 }
@@ -1368,10 +1774,16 @@
 .miniatura-cenere.attiva {
 
     opacity: 1;
-    border-color: #222;
+    border-color: #b94331;
 
 }
+@media (max-width: 600px) {
 
+    .galleria-ceneri #fotoPrincipaleCeneri {
+        height: 300px;
+    }
+
+}
 </style>
 
 
@@ -1640,62 +2052,85 @@ mostraOperaCenere(0);
 
 
 <!-- ===================================================== -->
-<!-- MODALE                                               -->
+<!-- MODALE MR.BURN                                       -->
 <!-- ===================================================== -->
 
 <div id="modal" class="modal">
+
     <div class="modal-contenuto">
 
-        <button id="chiudiModal" class="chiudi" type="button" aria-label="Chiudi">
+        <button id="chiudiModal"
+                class="chiudi"
+                type="button"
+                aria-label="Chiudi">
             ×
         </button>
 
-        <h2>
-            RICHIEDI INFORMAZIONI
-        </h2>
+        <h2>UN'OPERA, UNA NUOVA STORIA.</h2>
 
         <div id="operaSelezionata" class="opera-selezionata">
+
             <div class="nome-opera">
                 Opera
             </div>
+
             <div class="prezzo-opera">
                 Prezzo
             </div>
+
         </div>
 
-        <div class="testo-contatto" style="text-align: left; line-height: 1.5; margin: 15px 0;">
-            Per adottare l'opera prima dello scadere contattami direttamente:<br><br>
-            <strong>Modalità di acquisto e spedizione:</strong><br>
-            • <strong>Acquisto protetto (Subito / Wallapop):</strong> su richiesta creo subito l'annuncio dedicato per gestire pagamento sicuro e spedizione tracciata.<br>
-            • <strong>Spedizione diretta:</strong> pagamento tramite PayPal con spedizione tracciata.
+        <div class="testo-contatto">
+
+            <p>
+                Hai trovato un'opera che vorresti accogliere
+                nella tua collezione?
+            </p>
+
+            <p>
+                Contattami prima che scada il suo tempo.
+                Potremo concordare insieme modalità di acquisto
+                e spedizione.
+            </p>
+
+            <p>
+                <strong>Acquisto protetto</strong><br>
+                Su richiesta posso creare un annuncio dedicato
+                su Subito o Wallapop, con pagamento sicuro
+                e spedizione tracciata.
+            </p>
+
+            <p>
+                <strong>Spedizione diretta</strong><br>
+                Pagamento tramite PayPal e spedizione tracciata.
+            </p>
+
         </div>
 
         <div class="social-modal">
-            
-            <!-- INSTAGRAM -->
-            <a href="https://www.instagram.com/mr.burn_30days" target="_blank" class="instagram">
+
+            <a href="https://www.instagram.com/mr.burn_30days"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="instagram">
                 📷 CONTATTAMI SU INSTAGRAM
             </a>
 
-            <!-- TIKTOK (nascosto finché non aggiungi il link e rimuovi display: none;) -->
-            <a href="INSERISCI_QUI_LINK_TIKTOK" target="_blank" class="tiktok" style="display: none;">
-                🎵 CONTATTAMI SU TIKTOK
+            <a href="mailto:mrburnart30@gmail.com?subject=Adozione%20opera%20MR.BURN"
+               class="email">
+                ✉️ SCRIVIMI VIA EMAIL
             </a>
-
-            <!-- EMAIL (nascosto finché non metti la tua email vera) -->
-                    <!-- EMAIL CON COPIA RAPIDA -->
-            <div style="background: #f3eee8; padding: 12px; border-radius: 6px; text-align: center; margin-top: 5px;">
-                <div style="font-size: 0.85rem; color: #555; margin-bottom: 4px;">Oppure scrivimi via email:</div>
-                <strong style="font-size: 1rem; color: #111; user-select: all;">mrburnart30@gmail.com</strong><br>
-                <button type="button" onclick="navigator.clipboard.writeText('mrburnart30@gmail.com'); this.textContent='✅ Email copiata!'; setTimeout(() => this.textContent='📋 Copia indirizzo email', 2500);" style="margin-top: 8px; padding: 6px 14px; font-size: 0.85rem; background: #222; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                    📋 Copia indirizzo email
-                </button>
-            </div>
 
         </div>
 
+        <p class="firma-modal">
+            MR.BURN — NIENTE SCOMPARE DAVVERO.
+        </p>
+
     </div>
+
 </div>
+ 
 
 
 <!-- ===================================================== -->
@@ -1771,21 +2206,13 @@ const operaSelezionata =
 ===========================================================
 */
 
+const linkInstagram = document.querySelector(
+    ".social-modal .instagram"
+);
 
-document
-    .querySelector(
-        ".social-modal .instagram"
-    )
-    .href =
-        LINK_INSTAGRAM;
-
-
-document
-    .querySelector(
-        ".social-modal .tiktok"
-    )
-    .href =
-        LINK_TIKTOK;
+if (linkInstagram) {
+    linkInstagram.href = LINK_INSTAGRAM;
+}
 
 
 
@@ -2065,15 +2492,24 @@ function aggiornaCatalogo() {
             ? "IL TEMPO STA FINENDO."
             : "QUEST'OPERA ASPETTA UNA NUOVA CASA.";
 
-        // STATO DEL TIMER
+ // STATO DEL TIMER
 
-        timer.classList.remove("scaduto", "non-disponibile");
+timer.classList.remove(
+    "scaduto",
+    "non-disponibile",
+    "giorno-zero",
+    "ultimi-giorni"
+);
 
-        if (giorno === 0) {
-            timer.classList.add("giorno-zero");
-        } else {
-            timer.classList.remove("giorno-zero");
-        }
+if (giorno === 0) {
+
+    timer.classList.add("giorno-zero");
+
+} else if (giorno <= 5) {
+
+    timer.classList.add("ultimi-giorni");
+
+}
 
         // VISUALIZZAZIONE
 
@@ -2126,7 +2562,6 @@ function aggiornaCatalogo() {
 
 
 
-
 /*
 ===========================================================
  AVVIO
@@ -2147,76 +2582,80 @@ setInterval(
 );
 
 
-
-
 /*
 /*
 ===========================================================
- ZOOM FOTO
+ ZOOM FOTO - TUTTE LE IMMAGINI
 ===========================================================
 */
 
 const zoomFoto = document.getElementById("zoomFoto");
-
 const immagineZoom = document.getElementById("immagineZoom");
-
 const chiudiZoom = document.getElementById("chiudiZoom");
 
+if (zoomFoto && immagineZoom && chiudiZoom) {
 
-// APERTURA ZOOM
+    // APERTURA CLICCANDO SU QUALSIASI FOTO
+    document.addEventListener("click", function(event) {
 
-document.addEventListener("click", function(event) {
+        const foto = event.target.closest("img");
 
-    const foto = event.target.closest(
-        ".foto-prodotto, #fotoPrincipaleCeneri, .miniatura-cenere"
-    );
+        if (!foto) return;
 
-    if (!foto) return;
+        // Evita di ingrandire la foto già aperta
+        if (foto.id === "immagineZoom") return;
 
-    immagineZoom.src = foto.src;
+        // Evita immagini senza sorgente
+        if (!foto.src) return;
 
-    immagineZoom.alt = foto.alt;
+        // Impedisce la navigazione se la foto è un link
+        const link = foto.closest("a");
+        if (link) event.preventDefault();
 
-    zoomFoto.classList.add("attivo");
+        immagineZoom.src = foto.src;
+        immagineZoom.alt = foto.alt || "Opera MR.BURN";
 
-});
+        zoomFoto.classList.add("attivo");
+        document.body.style.overflow = "hidden";
 
+    });
 
-// CHIUSURA CON X
-
-chiudiZoom.addEventListener("click", function() {
-
-    zoomFoto.classList.remove("attivo");
-
-});
-
-
-// CHIUSURA FUORI DALL'IMMAGINE
-
-zoomFoto.addEventListener("click", function(event) {
-
-    if (event.target === zoomFoto) {
+    // CHIUSURA CON X
+    chiudiZoom.addEventListener("click", function() {
 
         zoomFoto.classList.remove("attivo");
+        document.body.style.overflow = "";
 
-    }
+    });
 
-});
+    // CHIUSURA CLICCANDO SULLO SFONDO
+    zoomFoto.addEventListener("click", function(event) {
 
+        if (event.target === zoomFoto) {
 
-// CHIUSURA CON ESC
+            zoomFoto.classList.remove("attivo");
+            document.body.style.overflow = "";
 
-document.addEventListener("keydown", function(event) {
+        }
 
-    if (event.key === "Escape") {
+    });
 
-        zoomFoto.classList.remove("attivo");
+    // CHIUSURA CON ESC
+    document.addEventListener("keydown", function(event) {
 
-    }
+        if (event.key === "Escape") {
 
-});
+            zoomFoto.classList.remove("attivo");
+            document.body.style.overflow = "";
 
+        }
 
+    });
+
+} else {
+
+    console.error("MR.BURN: elementi HTML dello zoom mancanti.");
+}
 </script>
 
 
