@@ -1157,11 +1157,13 @@ header.hero {
     >
 
 
-        <img
-            class="foto-prodotto"
-            src="Peni kiwi.JPG"
-            alt="Opera"
-        >
+     <img
+    class="foto-prodotto"
+    src="Peni kiwi.JPG"
+    alt="Opera"
+    loading="lazy"
+    decoding="async"
+>
 
 
         <div class="contenuto">
@@ -1998,6 +2000,8 @@ function creaMiniatureCeneri() {
         const miniatura = document.createElement("img");
 
         miniatura.src = opera.foto;
+        miniatura.loading = "lazy";
+        miniatura.decoding = "async";
 
         miniatura.alt = opera.titolo;
 
